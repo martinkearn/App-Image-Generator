@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | App Image Generator</title>
+    <meta content="@ViewBag.Description" name="Description" />
+    <meta content="@ViewBag.Keywords" name="Keywords" />
+
+    <!--Bootstrap-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    @RenderBody()
+
+    <!--JS-->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/tools.js"></script>
+</body>
+</html>
