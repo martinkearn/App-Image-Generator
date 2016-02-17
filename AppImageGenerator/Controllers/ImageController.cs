@@ -162,17 +162,27 @@ namespace WWA.WebUI.Controllers
                 }
 
 
+
                 using (var zip = new ZipFile())
                 {
+                    var iconObject = new IconRootObject();
                     foreach (var profile in profiles)
                     {
+
                         var stream = CreateImageStream(model, profile);
 
                         //var stream = ResizeImage(model.InputImage, profile.Width, profile.Height, profile.Format, model.Padding, model.Background);
                         string fmt = string.IsNullOrEmpty(profile.Format) ? "png" : profile.Format;
                         zip.AddEntry(profile.Folder + profile.Name + "." + fmt, stream);
                         stream.Flush();
+
+                        iconObject.icons.Add(new IconObject(profile.Name + "." + fmt, profile.Width + "x" + profile.Height));
                     }
+
+                    var iconStr = JsonConvert.SerializeObject(iconObject, Formatting.Indented);
+
+                    zip.AddEntry("icons.json", iconStr);
+
                     string zipFilePath = CreateFilePathFromId(zipId);
                     zip.Save(zipFilePath);
                 }
@@ -378,5 +388,22 @@ namespace WWA.WebUI.Controllers
     public class ImageResponse
     {
         public Uri Uri { get; set; }
+    }
+
+    public class IconObject
+    {
+        public IconObject(string src, string size)
+        {
+            this.src = src;
+            this.size = size;
+        }
+
+        public string src { get; set; }
+        public string size { get; set; }
+    }
+
+    public class IconRootObject
+    {
+        public List<IconObject> icons { get; set; } = new List<IconObject>();
     }
 }
