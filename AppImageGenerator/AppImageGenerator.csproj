@@ -135,6 +135,7 @@
     <Content Include="App_Data\windowsuwpImages.json" />
     <Content Include="App_Data\windows81UniversalImages.json" />
     <Content Include="App_Data\windowsPhone81UniversalImages.json" />
+    <None Include="Properties\PublishProfiles\AppImageGenerator - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\AppImageGenerator - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
